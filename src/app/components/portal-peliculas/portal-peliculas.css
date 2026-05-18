@@ -1,0 +1,22 @@
+/* Aseguramos una transición suave para la tarjeta completa */
+.card-pelicula {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* Vital para que el zoom de la imagen no se desborde */
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.card-pelicula:hover {
+  transform: translateY(-8px); /* Eleva la tarjeta 8 píxeles */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5) !important; /* Sombra más pronunciada y oscura */
+  cursor: pointer;
+}
+
+/* Transición suave para la imagen del póster */
+.card-pelicula .card-img-top {
+  transition: transform 0.4s ease;
+}
+
+/* Efecto de zoom a la imagen cuando se hace hover en la tarjeta */
+.card-pelicula:hover .card-img-top {
+  transform: scale(1.06); /* Agranda la imagen un 6% */
+}
