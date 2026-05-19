@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PeliculaService } from '../../services/pelicula-service';
 import { CommonModule } from '@angular/common';
 
@@ -13,7 +13,7 @@ export class PortalPeliculas implements OnInit{
   peliculas: any[] = [];
   cargando: boolean = true;
 
-  constructor(private peliculasService: PeliculaService) { };
+  constructor(private peliculasService: PeliculaService, private cdRef: ChangeDetectorRef) { };
   
   ngOnInit(): void {
     this.obtenerPeliculas();
@@ -25,6 +25,7 @@ export class PortalPeliculas implements OnInit{
         this.peliculas = response;
         console.log(this.peliculas);
         this.cargando = false;
+        this.cdRef.detectChanges();
       },
       (error) => {
         console.error('Error al obtener las películas:', error);

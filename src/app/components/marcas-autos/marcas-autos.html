@@ -1,0 +1,48 @@
+<div class="container py-3">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white border border-secondary shadow-lg">
+                <div class="modal-header border-secondary">
+                    <h1 class="modal-title fs-5 text-info fw-bold" id="exampleModalLabel">Modelos de la Marca</h1>
+                    <button type="button" class="btn-close btn-close-white" (click)="cerrarModal()" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body py-3">
+                    <ul class="list-group list-group-flush">
+                        @for (modelo of modelos; track modelo.id) {
+                        <li
+                            class="list-group-item bg-transparent border-secondary d-flex align-items-center py-2">
+                            <h4 class="text-white me-2">{{ modelo.name }}</h4> 
+                        </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" (click)="cerrarModal()" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="mb-4 text-primary fw-bold">Marcas de Autos</h1>
+
+    <div class="row g-3">
+        @for (marca of marcas; track marca.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div
+                class="p-3 border rounded-3 border-info bg-dark h-100 d-flex flex-column justify-content-between card-marca shadow-sm">
+                <h5 class="text-center fw-bolder text-white text-wrap mb-3">{{ marca.name }}</h5>
+
+                <div class="d-flex justify-content-end mt-auto">
+                    <button class="btn btn-outline-info btn-sm px-3" type="button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" (click)="cargarModelos(marca.id)">
+                        Ver Modelos
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
